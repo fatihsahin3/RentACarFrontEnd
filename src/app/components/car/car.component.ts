@@ -15,12 +15,18 @@ export class CarComponent implements OnInit {
   ) {}
 
   cars: Car[] = [];
+  currentCar: Car;
   dataLoaded = false;
+  templateUrl: string = 'https://localhost:4200';
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
-        this.getCarsByBrand(params['brandId']);
+        if (params['brandId'] === 'all') {
+          this.getCars();
+        } else {
+          this.getCarsByBrand(params['brandId']);
+        }
       } else if (params['colorId']) {
         this.getCarsByColor(params['colorId']);
       } else {
@@ -48,5 +54,17 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  getCarClass(car: Car) {
+    if (car == this.currentCar) {
+      return 'table-info cursorPointer';
+    } else {
+      return 'cursorPointer';
+    }
+  }
+
+  setCurrentCar(car: Car) {
+    this.currentCar = car;
   }
 }
