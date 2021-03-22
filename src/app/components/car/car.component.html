@@ -6,6 +6,57 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Search Car</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Search Car.."
+  />
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="cars">Select Brand:</label>
+    <select
+      [(ngModel)]="selectedBrand"
+      (ngModelChange)="setSelectedBrandId($event)"
+      class="form-select"
+    >
+      <option *ngFor="let brand of brands" value="{{ brand.id }}">
+        {{ brand.brandName }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="cars">Select Color:</label>
+    <select
+      [(ngModel)]="selectedColor"
+      (ngModelChange)="setSelectedColorId($event)"
+      class="form-select"
+    >
+      <option *ngFor="let color of colors" value="{{ color.id }}">
+        {{ color.colorName }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <button
+      (click)="getCarsByBrandAndColor(selectedBrandId, selectedColorId)"
+      type="button"
+      class="btn btn-success btn-xs"
+    >
+      Filter
+    </button>
+  </div>
+</div>
+
+<div *ngIf="filterText.length > 2" class="alert alert-success">
+  You searched {{ filterText }}!
+</div>
+
 <table *ngIf="dataLoaded == true" class="table">
   <thead *ngIf="dataLoaded == true">
     <tr>
@@ -19,17 +70,26 @@
   </thead>
   <tbody>
     <tr
-      *ngFor="let car of cars"
-      (click)="setCurrentCar(car)"
-      routerLink="/cars/details/{{ car.id }}"
+      *ngFor="let car of cars | filterPipe: filterText"
       [class]="getCarClass(car)"
     >
       <td>{{ car.id }}</td>
       <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
-      <td>{{ car.carName }}</td>
+      <td (click)="setCurrentCar(car)" routerLink="/cars/details/{{ car.id }}">
+        {{ car.carName }}
+      </td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice }}</td>
+      <td>
+        <button
+          (click)="addToCart(car)"
+          type="button"
+          class="btn btn-success btn-xs"
+        >
+          Rent
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

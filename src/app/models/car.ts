@@ -9,6 +9,5 @@ export interface Car {
   carName: string;
   modelYear: number;
   dailyPrice: number;
-  imagePath: string;
-  carImages: CarImage[];
+  description: string;
 }
