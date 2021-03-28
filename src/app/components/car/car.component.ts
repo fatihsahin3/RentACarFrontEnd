@@ -135,8 +135,4 @@ export class CarComponent implements OnInit {
   setSelectedColorId(colorId: number) {
     this.selectedColorId = colorId;
   }
-
-  addToCart(car: Car) {
-    this.toastrService.success('Added into Cart', car.carName);
-  }
 }

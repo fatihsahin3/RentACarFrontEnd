@@ -76,14 +76,13 @@
       <td>{{ car.id }}</td>
       <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
-      <td (click)="setCurrentCar(car)" routerLink="/cars/details/{{ car.id }}">
-        {{ car.carName }}
-      </td>
+      <td>{{ car.carName }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice }}</td>
       <td>
         <button
-          (click)="addToCart(car)"
+          (click)="setCurrentCar(car)"
+          routerLink="/cars/details/{{ car.id }}"
           type="button"
           class="btn btn-success btn-xs"
         >
