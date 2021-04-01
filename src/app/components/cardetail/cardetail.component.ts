@@ -7,6 +7,8 @@ import { CarimageService } from 'src/app/services/carimage.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Rental } from 'src/app/models/rental';
 import { ToastrService } from 'ngx-toastr';
+import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from 'src/app/models/customer';
 
 @Component({
   selector: 'app-cardetail',
@@ -14,9 +16,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cardetail.component.css'],
 })
 export class CardetailComponent implements OnInit {
-  cars: Car[];
+  cars: Car[] = [];
   carId: number;
-  images: CarImage[];
+  customers: Customer[] = [];
+  images: CarImage[] = [];
   imageUrl: string = 'https://localhost:44399';
   closeResult = '';
   rentDate: Date;
@@ -24,6 +27,7 @@ export class CardetailComponent implements OnInit {
 
   constructor(
     private carService: CarService,
+    private customerService: CustomerService,
     private carImageService: CarimageService,
     private activatedRoute: ActivatedRoute,
     private modalService: NgbModal,
@@ -39,6 +43,7 @@ export class CardetailComponent implements OnInit {
         this.getCarImagesByCarId(params['carId']);
       }
     });
+    this.getCustomerDetails();
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -98,10 +103,18 @@ export class CardetailComponent implements OnInit {
     let car: Car = this.cars[0];
     let myRental: Rental = {
       carId: car.id,
+      brandName: car.brandName,
+      customerName: 'Fatih',
       rentDate: this.rentDate,
       returnDate: this.returnDate,
     };
 
     console.log(myRental);
+  }
+
+  getCustomerDetails() {
+    this.customerService.getCustomerDetails().subscribe((response) => {
+      this.customers = response.data;
+    });
   }
 }
