@@ -9,12 +9,14 @@ import { ResponseModel } from '../models/ResponseModel';
   providedIn: 'root',
 })
 export class BrandService {
-  apiUrl = 'https://localhost:44399/api/brands/getall';
+  apiUrl = 'https://localhost:44399/api/';
 
   constructor(private httpClient: HttpClient) {}
 
   getBrands(): Observable<ListResponseModel<Brand>> {
-    return this.httpClient.get<ListResponseModel<Brand>>(this.apiUrl);
+    return this.httpClient.get<ListResponseModel<Brand>>(
+      this.apiUrl + 'brands/getall'
+    );
   }
 
   add(brand: Brand): Observable<ResponseModel> {
