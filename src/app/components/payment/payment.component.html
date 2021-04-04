@@ -1,1 +1,70 @@
-<p>payment works!</p>
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Payment</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="paymentForm">
+          <div class="mb-3">
+            <label for="cardHolderName">Card Holder Name:</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="cardHolderName"
+                formControlName="cardHolderName"
+                class="form-control"
+                placeholder="Card Holder Name"
+                [(ngModel)]="cardHolderName"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="cardNumber">Credit Card Number:</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="cardNumber"
+                formControlName="cardNumber"
+                class="form-control"
+                placeholder="Card Number"
+                [(ngModel)]="cardNumber"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="cardCvv">CVV:</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="cardCvv"
+                formControlName="cardCvv"
+                class="form-control"
+                placeholder="CVV"
+                [(ngModel)]="cardCvv"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="expirationDate">Expiration Date:</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="expirationDate"
+                formControlName="expirationDate"
+                class="form-control"
+                placeholder="Expiration Date"
+                [(ngModel)]="expirationDate"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="executePayment()">
+          Pay
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,11 +8,21 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CustomerService {
-  apiUrl = 'https://localhost:44399/api/customers/getcustomerdetails';
+  apiUrl = 'https://localhost:44399/api/customers/';
 
   constructor(private httpClient: HttpClient) {}
 
   getCustomerDetails(): Observable<ListResponseModel<Customer>> {
-    return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl);
+    return this.httpClient.get<ListResponseModel<Customer>>(
+      this.apiUrl + 'getcustomerdetails'
+    );
+  }
+
+  getCustomerDetailsByEmail(
+    email: string
+  ): Observable<ListResponseModel<Customer>> {
+    return this.httpClient.get<ListResponseModel<Customer>>(
+      this.apiUrl + 'getcustomerdetailsbyemail?email=' + email
+    );
   }
 }

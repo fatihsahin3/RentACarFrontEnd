@@ -9,9 +9,17 @@ import { Rental } from 'src/app/models/rental';
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Customer } from 'src/app/models/customer';
+import { DatePipe } from '@angular/common';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-cardetail',
+  template: '<app-cardetail [myRental]="myRental"></app-cardetail>',
   templateUrl: './cardetail.component.html',
   styleUrls: ['./cardetail.component.css'],
 })
@@ -19,11 +27,20 @@ export class CardetailComponent implements OnInit {
   cars: Car[] = [];
   carId: number;
   customers: Customer[] = [];
+  myRental: Rental;
+  rentalForm: FormGroup;
+
   images: CarImage[] = [];
   imageUrl: string = 'https://localhost:44399';
   closeResult = '';
   rentDate: Date;
   returnDate: Date;
+  activeCustomer: Customer;
+  activeCustomerName: string | null;
+
+  minDate: string | any;
+  maxDate: string | null;
+  firstDateSelected: boolean = false;
 
   constructor(
     private carService: CarService,
@@ -32,10 +49,13 @@ export class CardetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private modalService: NgbModal,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.createRentalForm();
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId']) {
         this.carId = params['carId'];
@@ -43,7 +63,22 @@ export class CardetailComponent implements OnInit {
         this.getCarImagesByCarId(params['carId']);
       }
     });
+
+    this.customerService
+      .getCustomerDetailsByEmail('fatihsahin@gmail.com')
+      .subscribe((response) => {
+        this.activeCustomer = response.data[0];
+      });
+
     this.getCustomerDetails();
+    this.getActiveCustomer();
+  }
+
+  createRentalForm() {
+    this.rentalForm = this.formBuilder.group({
+      rentDate: ['', Validators.required],
+      returnDate: ['', Validators.required],
+    });
   }
 
   getCarDetailsByCarId(carId: number) {
@@ -73,48 +108,58 @@ export class CardetailComponent implements OnInit {
   }
 
   open(content: any) {
-    this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result;
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
+  getRentMinDate() {
+    this.minDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+    return this.minDate;
+  }
+
+  getReturnMinDate() {
+    if (this.rentDate != undefined) {
+      let stringToDate = new Date(this.rentDate);
+      let new_date = new Date();
+      new_date.setDate(stringToDate.getDate() + 1);
+      return new_date.toISOString().slice(0, 10);
     } else {
-      return `with: ${reason}`;
+      return this.rentDate;
     }
   }
+  getReturnMaxDate() {
+    this.maxDate = this.datePipe.transform(
+      new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+      'yyyy-MM-dd'
+    );
+    return this.maxDate;
+  }
 
-  showDates() {
-    console.log(this.returnDate);
+  onChangeEvent(event: any) {
+    this.minDate = event.target.value;
+    this.firstDateSelected = true;
   }
 
   createRental() {
     let car: Car = this.cars[0];
-    let myRental: Rental = {
+    this.myRental = {
       carId: car.id,
-      brandName: car.brandName,
-      customerName: 'Fatih',
+      customerId: this.activeCustomer.id,
       rentDate: this.rentDate,
       returnDate: this.returnDate,
     };
 
-    console.log(myRental);
+    this.toastrService.success('You are being directed to payment page..');
+    this.router.navigate(['/payment/', JSON.stringify(this.myRental)]);
   }
 
   getCustomerDetails() {
     this.customerService.getCustomerDetails().subscribe((response) => {
       this.customers = response.data;
     });
+  }
+
+  getActiveCustomer() {
+    this.activeCustomerName = localStorage.getItem('activeCustomerName');
   }
 }
