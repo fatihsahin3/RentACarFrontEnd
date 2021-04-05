@@ -37,6 +37,7 @@ export class CardetailComponent implements OnInit {
   returnDate: Date;
   activeCustomer: Customer;
   activeCustomerName: string | null;
+  activeCustomerEmail: string;
 
   minDate: string | any;
   maxDate: string | null;
@@ -65,7 +66,7 @@ export class CardetailComponent implements OnInit {
     });
 
     this.customerService
-      .getCustomerDetailsByEmail('fatihsahin@gmail.com')
+      .getCustomerDetailsByEmail(localStorage.getItem('activeCustomerEmail')!)
       .subscribe((response) => {
         this.activeCustomer = response.data[0];
       });
@@ -150,7 +151,10 @@ export class CardetailComponent implements OnInit {
     };
 
     this.toastrService.success('You are being directed to payment page..');
-    this.router.navigate(['/payment/', JSON.stringify(this.myRental)]);
+
+    setTimeout(() => {
+      this.router.navigate(['/payment/', JSON.stringify(this.myRental)]);
+    }, 5000);
   }
 
   getCustomerDetails() {

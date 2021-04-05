@@ -222,6 +222,8 @@
                   id="rentDate"
                   formControlName="rentDate"
                   class="form-control"
+                  (change)="onChangeEvent($event)"
+                  min="{{ getRentMinDate() }}"
                   [(ngModel)]="rentDate"
                 />
               </div>
@@ -234,6 +236,8 @@
                   id="returnDate"
                   formControlName="returnDate"
                   class="form-control"
+                  min="{{ getReturnMinDate() }}"
+                  max="{{ getReturnMaxDate() }}"
                   [(ngModel)]="returnDate"
                 />
               </div>

@@ -12,6 +12,7 @@ import { Payment } from 'src/app/models/payment';
 import { CreditCard } from 'src/app/models/creditCard';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentService } from 'src/app/services/payment.service';
+import { Car } from 'src/app/models/car';
 
 @Component({
   selector: 'app-payment',
@@ -20,9 +21,11 @@ import { PaymentService } from 'src/app/services/payment.service';
   styleUrls: ['./payment.component.css'],
 })
 export class PaymentComponent implements OnInit {
+  cars: Car[] = [];
   rental: Rental;
   creditCard: CreditCard;
   payment: Payment;
+  amountToPay: number;
   customerId: number;
   paymentForm: FormGroup;
   cardHolderName: string;
@@ -35,7 +38,8 @@ export class PaymentComponent implements OnInit {
     private carService: CarService,
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,8 +48,8 @@ export class PaymentComponent implements OnInit {
         this.rental = JSON.parse(params['rental']);
       }
     });
-
     this.createPaymentForm();
+    this.getCarDetailsByCarId(this.rental.carId);
   }
 
   createPaymentForm() {
@@ -57,16 +61,22 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+  calculateAmount() {
+    var date1 = new Date(this.rental.returnDate.toString());
+    var date2 = new Date(this.rental.rentDate.toString());
+    var difference = date1.getTime() - date2.getTime();
+    var numberOfDays = Math.ceil(difference / (1000 * 3600 * 24));
+    this.amountToPay = numberOfDays * this.cars[0].dailyPrice;
+  }
+
   executePayment() {
     this.creditCard = Object.assign({}, this.paymentForm.value);
 
     this.payment = {
       rental: this.rental,
       creditCard: this.creditCard,
-      amount: 100,
+      amount: this.amountToPay,
     };
-
-    console.log(this.payment);
 
     this.paymentService.executePayment(this.payment).subscribe((response) => {
       if (response.success) {
@@ -74,6 +84,17 @@ export class PaymentComponent implements OnInit {
       } else {
         this.toastrService.error(response.message);
       }
+    });
+
+    setTimeout(() => {
+      this.router.navigate(['']);
+    }, 3000);
+  }
+
+  getCarDetailsByCarId(carId: number) {
+    this.carService.getCarDetails(carId).subscribe((response) => {
+      this.cars = response.data;
+      this.calculateAmount();
     });
   }
 }
