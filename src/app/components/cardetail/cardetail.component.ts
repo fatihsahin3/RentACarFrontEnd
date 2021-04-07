@@ -16,6 +16,8 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { CreditScoreService } from 'src/app/services/credit-score.service';
+import { CreditScore } from 'src/app/models/creditScore';
 
 @Component({
   selector: 'app-cardetail',
@@ -25,6 +27,7 @@ import {
 })
 export class CardetailComponent implements OnInit {
   cars: Car[] = [];
+  car: Car;
   carId: number;
   customers: Customer[] = [];
   myRental: Rental;
@@ -36,8 +39,8 @@ export class CardetailComponent implements OnInit {
   rentDate: Date;
   returnDate: Date;
   activeCustomer: Customer;
-  activeCustomerName: string | null;
   activeCustomerEmail: string;
+  activeCustomerCreditScore: CreditScore;
 
   minDate: string | any;
   maxDate: string | null;
@@ -52,7 +55,8 @@ export class CardetailComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private datePipe: DatePipe,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private creditScoreService: CreditScoreService
   ) {}
 
   ngOnInit(): void {
@@ -69,10 +73,13 @@ export class CardetailComponent implements OnInit {
       .getCustomerDetailsByEmail(localStorage.getItem('activeCustomerEmail')!)
       .subscribe((response) => {
         this.activeCustomer = response.data[0];
-      });
 
-    this.getCustomerDetails();
-    this.getActiveCustomer();
+        this.creditScoreService
+          .getCreditScoreByCustomerId(this.activeCustomer.id)
+          .subscribe((response) => {
+            this.activeCustomerCreditScore = response.data;
+          });
+      });
   }
 
   createRentalForm() {
@@ -109,8 +116,17 @@ export class CardetailComponent implements OnInit {
   }
 
   open(content: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result;
+    if (
+      this.activeCustomerCreditScore.creditScoreValue >=
+      this.cars[0].minCreditScore
+    ) {
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+        .result;
+    } else {
+      this.toastrService.error(
+        'Your credit score is insufficient for this car!'
+      );
+    }
   }
 
   getRentMinDate() {
@@ -142,16 +158,15 @@ export class CardetailComponent implements OnInit {
   }
 
   createRental() {
-    let car: Car = this.cars[0];
+    this.car = this.cars[0];
+
     this.myRental = {
-      carId: car.id,
+      carId: this.car.id,
       customerId: this.activeCustomer.id,
       rentDate: this.rentDate,
       returnDate: this.returnDate,
     };
-
     this.toastrService.success('You are being directed to payment page..');
-
     setTimeout(() => {
       this.router.navigate(['/payment/', JSON.stringify(this.myRental)]);
     }, 5000);
@@ -163,7 +178,11 @@ export class CardetailComponent implements OnInit {
     });
   }
 
-  getActiveCustomer() {
-    this.activeCustomerName = localStorage.getItem('activeCustomerName');
+  getCreditScoreByCustomerId(customerId: number) {
+    this.creditScoreService
+      .getCreditScoreByCustomerId(customerId)
+      .subscribe((response) => {
+        this.activeCustomerCreditScore = response.data;
+      });
   }
 }
