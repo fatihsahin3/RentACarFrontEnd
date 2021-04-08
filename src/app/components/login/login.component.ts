@@ -53,10 +53,6 @@ export class LoginComponent implements OnInit {
             .subscribe((response) => {
               this.activeCustomer = response.data[0];
               localStorage.setItem(
-                'activeCustomerName',
-                this.activeCustomer.customerName
-              );
-              localStorage.setItem(
                 'activeCustomerEmail',
                 this.activeCustomer.email
               );

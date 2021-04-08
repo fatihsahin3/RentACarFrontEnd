@@ -1,0 +1,90 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Register</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registerForm">
+          <div class="mb-3">
+            <label for="firstName">First Name:</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="firstName"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="First Name"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="lastName">Last Name:</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="Last Name"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="companyName">Company Name:</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="companyName"
+                formControlName="companyName"
+                class="form-control"
+                placeholder="Company Name"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email">Email*:</label>
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="form-control"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password">Password*:</label>
+            <div class="form-group">
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword">Confirm Password*:</label>
+            <div class="form-group">
+              <input
+                type="password"
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                class="form-control"
+                placeholder="Confirm Password"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="register()">
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DatePipe } from '@angular/common';
     BrandAddComponent,
     ColorAddComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

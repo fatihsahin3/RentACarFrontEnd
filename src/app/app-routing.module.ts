@@ -13,6 +13,7 @@ import { ColorComponent } from './components/color/color.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'brands/add', component: BrandAddComponent },
   { path: 'colors/add', component: ColorAddComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
