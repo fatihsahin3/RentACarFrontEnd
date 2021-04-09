@@ -25,4 +25,10 @@ export class CustomerService {
       this.apiUrl + 'getcustomerdetailsbyemail?email=' + email
     );
   }
+
+  getCustomerDetailsById(id: number): Observable<ListResponseModel<Customer>> {
+    return this.httpClient.get<ListResponseModel<Customer>>(
+      this.apiUrl + 'getcustomerdetailsbyid?id=' + id
+    );
+  }
 }

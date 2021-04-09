@@ -14,6 +14,7 @@ import { BrandComponent } from './components/brand/brand.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'cars/brand/:brandId', component: CarComponent },
   { path: 'cars/color/:colorId', component: CarComponent },
   { path: 'customers', component: CustomerComponent },
+  { path: 'customers/:id', component: CustomerDetailComponent },
   {
     path: 'cars/details/:carId',
     component: CardetailComponent,

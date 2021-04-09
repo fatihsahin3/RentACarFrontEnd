@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Customer } from 'src/app/models/customer';
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private toastrService: ToastrService,
     private router: Router,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -46,17 +48,14 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe(
         (response) => {
           this.toastrService.info(response.message);
-          localStorage.setItem('token', response.data.token);
+          this.localStorageService.set('token', response.data.token);
           this.router.navigate(['']);
           this.customerService
             .getCustomerDetailsByEmail(loginModel.email)
             .subscribe((response) => {
               this.activeCustomer = response.data[0];
-              localStorage.setItem(
-                'activeCustomerEmail',
-                this.activeCustomer.email
-              );
-              console.log(this.activeCustomer);
+              this.localStorageService.set('email', this.activeCustomer.email);
+              window.location.reload();
             });
         },
         (responseError) => {

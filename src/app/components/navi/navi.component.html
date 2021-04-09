@@ -48,15 +48,33 @@
           >
         </li>
       </ul>
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <button [class]="buttonClass" type="submit" routerLink="/login">
+        Login
+      </button>
+      <button [class]="buttonClass" type="submit" routerLink="/register">
+        Register
+      </button>
+      <div class="btn-group">
+        <button
+          type="button"
+          [class]="userMenuClass"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ activeCustomer.firstName + " " + activeCustomer.lastName }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a class="dropdown-item" (click)="routeToCustomerDetailPage()"
+              >User Data</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

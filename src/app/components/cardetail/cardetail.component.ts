@@ -18,6 +18,7 @@ import {
 } from '@angular/forms';
 import { CreditScoreService } from 'src/app/services/credit-score.service';
 import { CreditScore } from 'src/app/models/creditScore';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-cardetail',
@@ -56,7 +57,8 @@ export class CardetailComponent implements OnInit {
     private router: Router,
     private datePipe: DatePipe,
     private formBuilder: FormBuilder,
-    private creditScoreService: CreditScoreService
+    private creditScoreService: CreditScoreService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +72,7 @@ export class CardetailComponent implements OnInit {
     });
 
     this.customerService
-      .getCustomerDetailsByEmail(localStorage.getItem('activeCustomerEmail')!)
+      .getCustomerDetailsByEmail(this.localStorageService.get('email')!)
       .subscribe((response) => {
         this.activeCustomer = response.data[0];
 
