@@ -25,8 +25,10 @@ import { CreditCardService } from 'src/app/services/credit-card.service';
 export class PaymentComponent implements OnInit {
   cars: Car[] = [];
   creditCards: CreditCard[] = [];
-  rental: Rental;
   creditCard: CreditCard;
+  isThisCreditCardAlreadySaved: boolean;
+  isThereAnySavedCreditCard: boolean;
+  rental: Rental;
   payment: Payment;
   amountToPay: number;
   paymentForm: FormGroup;
@@ -121,11 +123,11 @@ export class PaymentComponent implements OnInit {
       .getByCustomerId(this.rental.customerId!)
       .subscribe((response) => {
         this.creditCards = response.data;
+        this.setSavedCreditCardsTableClass();
       });
   }
 
   saveCreditCard() {
-    console.log(this.creditCard);
     this.creditCardService.add(this.creditCard).subscribe((response) => {
       if (response.success) {
         this.toastrService.success(response.message);
@@ -135,11 +137,13 @@ export class PaymentComponent implements OnInit {
     });
   }
 
-  getSavedCreditCardsTableClass() {
+  setSavedCreditCardsTableClass() {
     if (this.creditCards.length > 0) {
       this.tableClass = 'table';
+      this.isThereAnySavedCreditCard = true;
     } else {
-      this.tableClass = 'visually-hidden';
+      this.tableClass = 'visually-hidden ';
+      this.isThereAnySavedCreditCard = false;
     }
   }
 
@@ -151,8 +155,22 @@ export class PaymentComponent implements OnInit {
     this.expYear = creditCard.expYear;
   }
 
+  checkIfThisCreditCardAlreadySaved(creditCardNumber: string) {
+    this.isThisCreditCardAlreadySaved = false;
+
+    this.creditCards.forEach((creditCard) => {
+      if (creditCard.cardNumber == creditCardNumber) {
+        this.isThisCreditCardAlreadySaved = true;
+      }
+    });
+  }
+
   open(content: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result;
+    this.checkIfThisCreditCardAlreadySaved(this.cardNumber);
+
+    if (!this.isThisCreditCardAlreadySaved) {
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+        .result;
+    }
   }
 }

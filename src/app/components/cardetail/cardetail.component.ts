@@ -116,16 +116,18 @@ export class CardetailComponent implements OnInit {
   }
 
   open(content: any) {
-    if (
-      this.activeCustomerCreditScore.creditScoreValue >=
+    if (this.activeCustomerCreditScore === null) {
+      this.toastrService.error('You have no credit score data!');
+    } else if (
+      this.activeCustomerCreditScore.creditScoreValue <
       this.cars[0].minCreditScore
     ) {
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
-        .result;
-    } else {
       this.toastrService.error(
         'Your credit score is insufficient for this car!'
       );
+    } else {
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+        .result;
     }
   }
 

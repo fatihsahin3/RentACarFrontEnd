@@ -27,6 +27,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
+import { HighlightDirective } from './directives/attribute directives/highlight.directive';
+import { NotDirective } from './directives/structrual directives/not.directive';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { CustomerDetailComponent } from './components/customer-detail/customer-d
     LoginComponent,
     RegisterComponent,
     CustomerDetailComponent,
+    HighlightDirective,
+    NotDirective,
   ],
   imports: [
     BrowserModule,

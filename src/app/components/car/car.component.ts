@@ -29,6 +29,8 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   templateUrl: string = 'https://localhost:4200';
   filterText = '';
+  path = 'https://localhost:44399/';
+  thumbnail = 'DefaultCar.jpg';
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {

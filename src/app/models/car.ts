@@ -11,4 +11,5 @@ export interface Car {
   dailyPrice: number;
   description: string;
   minCreditScore: number;
+  imagePath: string;
 }

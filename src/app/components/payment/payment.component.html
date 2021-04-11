@@ -1,152 +1,161 @@
-<table class="table">
-  <thead>
-    <tr></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td *ngFor="let creditCard of creditCards">
-        <div class="btn-group" role="group" aria-label="Basic example">
+<div class="content">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Payment</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="paymentForm">
+            <div class="mb-3">
+              <label for="cardHolderName">Card Holder Name:</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="cardHolderName"
+                  formControlName="cardHolderName"
+                  class="form-control"
+                  placeholder="Card Holder Name"
+                  [(ngModel)]="cardHolderName"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="cardNumber">Credit Card Number:</label>
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="cardNumber"
+                  formControlName="cardNumber"
+                  class="form-control"
+                  placeholder="Card Number"
+                  [(ngModel)]="cardNumber"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="cvv">CVV:</label>
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="cvv"
+                  formControlName="cvv"
+                  class="form-control"
+                  placeholder="CVV"
+                  [(ngModel)]="cvv"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="expirationDate">Expiration Date:</label>
+              <div class="form-group row">
+                <div class="col-md-1">
+                  <input
+                    type="text"
+                    id="expMonth"
+                    formControlName="expMonth"
+                    class="form-control"
+                    placeholder="Month"
+                    [(ngModel)]="expMonth"
+                  />
+                </div>
+                /
+                <div class="col-md-1">
+                  <input
+                    type="text"
+                    id="expYear"
+                    formControlName="expYear"
+                    class="form-control"
+                    placeholder="Year"
+                    [(ngModel)]="expYear"
+                  />
+                </div>
+                <div class="col-md-6"></div>
+              </div>
+            </div>
+          </form>
+          <div>
+            <label>Payment Amount:</label>
+            <p>{{ amountToPay }}</p>
+          </div>
+        </div>
+        <div class="card-footer">
           <button
-            type="button"
-            class="btn btn-primary"
-            (click)="fillCreditCardForm(creditCard)"
+            class="btn btn-fill btn-primary"
+            (click)="executePayment(); open(content)"
           >
-            <h6>{{ creditCard.cardHolderName }}</h6>
-            <h6>{{ creditCard.cardNumber }}</h6>
-            <h6>{{ creditCard.cardType }}</h6>
+            Pay
           </button>
         </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="content">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="title">Payment</h5>
       </div>
-      <div class="card-body">
-        <form [formGroup]="paymentForm">
-          <div class="mb-3">
-            <label for="cardHolderName">Card Holder Name:</label>
-            <div class="form-group">
-              <input
-                type="text"
-                id="cardHolderName"
-                formControlName="cardHolderName"
-                class="form-control"
-                placeholder="Card Holder Name"
-                [(ngModel)]="cardHolderName"
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="cardNumber">Credit Card Number:</label>
-            <div class="form-group">
-              <input
-                type="number"
-                id="cardNumber"
-                formControlName="cardNumber"
-                class="form-control"
-                placeholder="Card Number"
-                [(ngModel)]="cardNumber"
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="cvv">CVV:</label>
-            <div class="form-group">
-              <input
-                type="number"
-                id="cvv"
-                formControlName="cvv"
-                class="form-control"
-                placeholder="CVV"
-                [(ngModel)]="cvv"
-              />
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="expirationDate">Expiration Date:</label>
-            <div class="form-group row">
-              <div class="col-md-1">
-                <input
-                  type="text"
-                  id="expMonth"
-                  formControlName="expMonth"
-                  class="form-control"
-                  placeholder="Month"
-                  [(ngModel)]="expMonth"
-                />
+    </div>
+    <div class="col-md-3">
+      <table [class]="tableClass">
+        <thead>
+          <tr>
+            <h6>Your Registered Credit Cards:</h6>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let creditCard of creditCards">
+            <td>
+              <div
+                class="btn-group col-12"
+                role="group"
+                aria-label="Basic example"
+              >
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="fillCreditCardForm(creditCard)"
+                >
+                  <h6>{{ creditCard.cardHolderName }}</h6>
+                  <h6>{{ creditCard.cardNumber }}</h6>
+                  <h6>{{ creditCard.cardType }}</h6>
+                </button>
               </div>
-              /
-              <div class="col-md-1">
-                <input
-                  type="text"
-                  id="expYear"
-                  formControlName="expYear"
-                  class="form-control"
-                  placeholder="Year"
-                  [(ngModel)]="expYear"
-                />
-              </div>
-              <div class="col-md-6"></div>
-            </div>
-          </div>
-        </form>
-        <div>
-          <label>Payment Amount:</label>
-          <p>{{ amountToPay }}</p>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button
-          class="btn btn-fill btn-primary"
-          (click)="executePayment(); open(content)"
-        >
-          Pay
-        </button>
-      </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
 
-<div>
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Save Credit Card</h4>
-      <button
-        type="button"
-        class="close"
-        aria-label="Close"
-        (click)="modal.dismiss('Cross click')"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="card">
-        <div class="card-body">Do you want to save this credit card?</div>
+  <div>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Save Credit Card</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-secondary"
-        (click)="modal.close()"
-        data-bs-dismiss="modal"
-      >
-        Cancel
-      </button>
-      <button
-        type="button"
-        class="btn btn-success"
-        (click)="saveCreditCard(); modal.dismiss('Cross click')"
-      >
-        Save
-      </button>
-    </div>
-  </ng-template>
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-body">Do you want to save this credit card?</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modal.close()"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="saveCreditCard(); modal.dismiss('Cross click')"
+        >
+          Save
+        </button>
+      </div>
+    </ng-template>
+  </div>
 </div>
