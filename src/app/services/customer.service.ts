@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Customer } from '../models/customer';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Observable } from 'rxjs';
+import { ResponseModel } from '../models/ResponseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,13 @@ export class CustomerService {
   getCustomerDetailsById(id: number): Observable<ListResponseModel<Customer>> {
     return this.httpClient.get<ListResponseModel<Customer>>(
       this.apiUrl + 'getcustomerdetailsbyid?id=' + id
+    );
+  }
+
+  updateCustomer(customer: Customer): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiUrl + 'update',
+      customer
     );
   }
 }

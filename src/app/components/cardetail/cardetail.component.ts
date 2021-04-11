@@ -94,14 +94,12 @@ export class CardetailComponent implements OnInit {
   getCarDetailsByCarId(carId: number) {
     this.carService.getCarDetails(carId).subscribe((response) => {
       this.cars = response.data;
-      console.log(response);
     });
   }
 
   getCarImagesByCarId(carId: number) {
     this.carImageService.getCarImagesByCarId(carId).subscribe((response) => {
       this.images = response.data;
-      console.log(response);
     });
   }
 

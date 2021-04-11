@@ -11,6 +11,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class NaviComponent implements OnInit {
   activeCustomer: Customer;
+  activeCustomerName: string;
   activeCustomerEmail: string;
   buttonClass: string;
   userMenuClass: string;
@@ -33,16 +34,17 @@ export class NaviComponent implements OnInit {
   }
 
   getActiveCustomer() {
-    this.getActiveCustomerEmail();
-    this.customerService
-      .getCustomerDetailsByEmail(this.activeCustomerEmail)
-      .subscribe((response) => {
-        this.activeCustomer = response.data[0];
-      });
-  }
+    if (this.localStorageService.get('email') !== null) {
+      this.activeCustomerEmail = this.localStorageService.get('email')!;
 
-  getActiveCustomerEmail() {
-    this.activeCustomerEmail = this.localStorageService.get('email')!;
+      this.customerService
+        .getCustomerDetailsByEmail(this.activeCustomerEmail)
+        .subscribe((response) => {
+          this.activeCustomer = response.data[0];
+          this.activeCustomerName =
+            this.activeCustomer.firstName + ' ' + this.activeCustomer.lastName;
+        });
+    }
   }
 
   getHtmlElementsClass() {
