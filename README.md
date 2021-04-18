@@ -37,16 +37,16 @@ It is linked with the backend project "RecapProject" in my repositories which wa
 
 ## Images
 
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar.gif">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar1.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar2.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar3.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar4.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar5.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar6.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar7.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar8.jpg" width="45%">
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar9.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar.GIF">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar1.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar2.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar3.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar4.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar5.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar6.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar7.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar8.JPG" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar9.JPG" width="45%">
 
 ## Development server
 
