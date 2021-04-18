@@ -2,6 +2,20 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
+### Tecnologies
+- Angular 11
+- TypeScript
+- Bootstrap
+- Jquery
+
+<img src="images/VisualStudioCodeLogo.png" alt="Logo" width="80" height="80">
+<img src="images/angular.png" alt="Logo" width="80" height="80">
+   
+### FrontendTechniques
+- Pipe
+- JWT
+- Service
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
