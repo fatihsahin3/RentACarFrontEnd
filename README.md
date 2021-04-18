@@ -8,8 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Bootstrap
 - Jquery
 
-<img src="images/VisualStudioCodeLogo.png" alt="Logo" width="80" height="80">
-<img src="images/angular.png" alt="Logo" width="80" height="80">
+<img src="images/angular.jpg" alt="Logo" width="80" height="80">
    
 ### FrontendTechniques
 - Pipe
