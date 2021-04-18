@@ -45,19 +45,19 @@ It is linked with the backend project "RecapProject" in my repositories which wa
     <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar2.JPG"></th>
   </tr>
   <tr>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar3.JPG" width="45%"></th>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar4.JPG" width="45%"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar3.JPG"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar4.JPG"></th>
   </tr>
   <tr>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar5.JPG" width="45%"></th>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar6.JPG" width="45%"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar5.JPG"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar6.JPG"></th>
   </tr>
   <tr>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar7.JPG" width="45%"></th>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar8.JPG" width="45%"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar7.JPG"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar8.JPG"></th>
   </tr>
   <tr>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar9.JPG" width="45%"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar9.JPG"></th>
     <th></th>
   </tr>
 </table>
