@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Bootstrap
 - Jquery
 
-<img src="images/angular.jpg" alt="Logo" width="80" height="80">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/angular.JPG" alt="Logo" width="80" height="80">
    
 ### FrontendTechniques
 - Pipe
