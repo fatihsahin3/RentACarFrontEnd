@@ -9,6 +9,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Jquery
 
 <img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/angular.JPG" alt="Logo" width="80" height="80">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/typescript.JPG" alt="Logo" width="80" height="80">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/bootstrap.JPG" alt="Logo" width="80" height="80">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/jquery.JPG" alt="Logo" width="80" height="80">
    
 ### FrontendTechniques
 - Pipe
