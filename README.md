@@ -41,8 +41,8 @@ It is linked with the backend project "RecapProject" in my repositories which wa
 
 <table>
   <tr>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar1.JPG" width="75%"></th>
-    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar2.JPG" width="75%"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar1.JPG"></th>
+    <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar2.JPG"></th>
   </tr>
   <tr>
     <th><img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar3.JPG" width="45%"></th>
