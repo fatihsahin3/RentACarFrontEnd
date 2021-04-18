@@ -37,10 +37,16 @@ It is linked with the backend project "RecapProject" in my repositories which wa
 
 ## Images
 
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar.gif" width="45%">
-
-
-
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar.gif">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar1.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar2.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar3.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar4.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar5.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar6.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar7.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar8.jpg" width="45%">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/rentacar9.jpg" width="45%">
 
 ## Development server
 
