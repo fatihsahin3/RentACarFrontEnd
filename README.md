@@ -37,7 +37,7 @@ It is linked with the backend project "RecapProject" in my repositories which wa
 
 ## Images
 
-<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar1.JPG">
+<img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/RentACar1.JPG" width="45%">
 
 
 
