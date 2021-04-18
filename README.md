@@ -8,6 +8,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Bootstrap
 - Jquery
 
+<table>
+  <tr>
+    <th>
+      <img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/angular.JPG" alt="Logo" width="80" height="80">
+    </th>
+    <th>
+      <img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/typscript.JPG" alt="Logo" width="80" height="80">
+    </th>
+  </tr>
+</table>
+
 <img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/angular.JPG" alt="Logo" width="80" height="80">
 <img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/typescript.JPG" alt="Logo" width="80" height="80">
 <img src="https://github.com/fatihsahin3/RentACarFrontEnd/blob/master/images/bootstrap.JPG" alt="Logo" width="80" height="80">
