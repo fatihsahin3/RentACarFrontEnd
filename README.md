@@ -1,6 +1,7 @@
 # Rentacar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+This project is an online car rental project and it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+It is linked with the backend project "RecapProject" in my repositories which was developed with C# using techniques like OOP, SOLID, DRY, Cross Cutting Concerns, Autofac, FluentValidation, Exception Handling, Aspect Oriented Programming (AOP), API Development and etc. You can have a look at my backend project from here => <a href="https://github.com/fatihsahin3/ReCapProject">ReCapProject </a>
 
 ### Tecnologies
 - Angular 11
