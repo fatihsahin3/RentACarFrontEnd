@@ -31,6 +31,10 @@ It is linked with the backend project "RecapProject" in my repositories which wa
 - JWT
 - Service
 
+## 📫 Author
+
+[![Linkedin Badge](https://img.shields.io/badge/fatihsahin-follow%20on%20linkedin-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/fatihsahin3/)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
